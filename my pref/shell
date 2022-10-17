@@ -1,0 +1,39 @@
+file filename tells a lot about file
+
+less command is a program to view text files.
+for eg: less today.txt
+
+https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Standard-unix-filesystem-hierarchy.svg/1920px-Standard-unix-filesystem-hierarchy.svg.png
+
+apropos - search the manual page names and descriptions
+whoami 	Displays current username.
+id 	Returns users identity
+hostname 	Sets or prints the name of current host system.
+uname 	Prints basic information about the operating system name and system hardware.
+pwd 	Returns working directory name.
+ifconfig 	The ifconfig utility is used to assign or to view an address to a network interface and/or configure network interface parameters.
+ip 	Ip is a utility to show or manipulate routing, network devices, interfaces and tunnels.
+netstat 	Shows network status.
+ss 	Another utility to investigate sockets.
+ps 	Shows process status.
+who 	Displays who is logged in.
+env 	Prints environment or sets and executes command.
+lsblk 	Lists block devices.
+lsusb 	Lists USB devices
+lsof 	Lists opened files.
+lspci 	Lists PCI devices.
+uname - print system information
+●cp – Copy files and directories
+●mv – Move/rename files and directories
+●mkdir – Create directories
+	mkdir -p (parents) can make sub directory
+●rm – Remove files and directories
+●ln – Create hard and symbolic links
+
+Read about wildcard 
+for eg 
+*   All files
+g*  Any file beginning with “g”
+b*.txt  Any file beginning with “b” followed by any characters and ending with “.txt”
+
+
