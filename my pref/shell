@@ -35,5 +35,7 @@ for eg
 *   All files
 g*  Any file beginning with “g”
 b*.txt  Any file beginning with “b” followed by any characters and ending with “.txt”
+ln – Create Links
+
 
 
