@@ -36,6 +36,20 @@ for eg
 g*  Any file beginning with “g”
 b*.txt  Any file beginning with “b” followed by any characters and ending with “.txt”
 ln – Create Links
+type – Display A Command's Type
+which – Display An Executable's Location
+man – Display A Program's Manual Page
+whatis – Display A Very Brief Description Of A Command
+info – Display A Program's Info Entry
 
+create own command
+alias foo='cd /usr; ls; cd -'
+	$ type foo
+foo is aliased to `cd /usr; ls ; cd -'
 
+remove alias
+unalias foo
+
+cat – Concatenate Files(In most cases, you can think of cat as being analogous to the TYPE command in DOS.
+You can use it to display files without paging)
 
