@@ -1,5 +1,11 @@
+lets start with some shell commands
+date  shows date
+cal   calender
+df    To see the current amount of free space on your disk drives
+exit  it is what the name says
+cd    change directory
 file filename tells a lot about file
-
+ls 	list(it has lot of arguments like ls -l/-a/...)
 less command is a program to view text files.
 for eg: less today.txt
 
@@ -28,14 +34,13 @@ uname - print system information
 ●mkdir – Create directories
 	mkdir -p (parents) can make sub directory
 ●rm – Remove files and directories
-●ln – Create hard and symbolic links
+●ln – Create hard and symbolic links(like copy but change in one file change in other file)
 
 Read about wildcard 
 for eg 
 *   All files
 g*  Any file beginning with “g”
 b*.txt  Any file beginning with “b” followed by any characters and ending with “.txt”
-ln – Create Links
 type – Display A Command's Type
 which – Display An Executable's Location
 man – Display A Program's Manual Page
@@ -52,4 +57,150 @@ unalias foo
 
 cat – Concatenate Files(In most cases, you can think of cat as being analogous to the TYPE command in DOS.
 You can use it to display files without paging)
+cat > lazy_dog.txt
+The quick brown fox jumped over the lazy dog.
+ctrl+d to say it is the end of file 
+and again cat lazy_dog.txt to copy file to stdout in terminal
+
+Pipelines
+The ability of commands to read data from standard input and send to standard output is utilized by a shell feature called pipelines. Using the pipe operator “|” (vertical bar), the standard output of one command can be piped into the standard input of another:
+for eg : ls -l /usr/bin | less
+
+The Difference Between > and |
+
+At first glance, it may be hard to understand the redirection performed by the
+pipeline operator | versus the redirection operator >. Simply put, the redirection
+operator connects a command with a file while the pipeline operator connects the
+output of one command with the input of a second command.
+command1 > file1
+command1 | command2
+A lot of people will try the following when they are learning about pipelines, “just to see what happens.”
+command1 > command2
+
+"Answer: Sometimes something really bad."
+Here is an actual example submitted by a reader who was administering a Linux-
+based server appliance. As the superuser, he did this:
+# cd /usr/bin
+# ls > less
+The first command put him in the directory where most programs are stored and the second command told the shell to overwrite the file less with the output of the ls command. Since the /usr/bin directory already contained a file named “less” (the less program), the second command overwrote the less program file with the text from ls thus destroying the less program on his system.
+The lesson here is that the redirection operator silently creates or overwrites files, so you need to treat it with a lot of respect.
+
+Filters : it take input, change it somehow and then output it.
+for eg
+ls /bin /usr/bin | sort | less
+
+uniq - Report Or Omit Repeated Lines
+
+wc – Print Line, Word, And Byte Counts
+The wc (word count) command is used to display the number of lines, words, and bytes
+contained in files. For example:
+❯ wc shell 
+  96  711 4312 shell
+  
+grep - grep is a powerful program used to find text patterns within files. It's used like this:
+grep pattern [file...]
+Let's say we wanted to find all the files in our list of programs that had the word “zip” embedded in the name. Such a search might give us an idea of some of the programs on our system that had something to do with file compression. We would do this:
+$ ls /bin /usr/bin | sort | uniq | grep zip
+
+head / tail – Print First / Last Part Of Files(10 LINE)
+head -n 5 ls-output.txt (-n can manupalate)
+ls /usr/bin | tail -n 5
+
+tail -f /var/log/messages
+-f let you see real time append in file 
+
+tee – Read From Stdin And Output To Stdout And Files
+Here we repeat one of our earlier examples, this time including tee to capture the entire directory listing to the file ls.txt before grep filters the pipeline's contents:
+ls /usr/bin | tee ls.txt | grep zip
+
+SUMMING UP
+Linux Is About Imagination
+When I am asked to explain the difference between Windows and Linux, I often
+use a toy analogy.
+Windows is like a Game Boy. You go to the store and buy one all shiny new in the
+box. You take it home, turn it on and play with it. Pretty graphics, cute sounds.
+After a while though, you get tired of the game that came with it so you go back
+to the store and buy another one. This cycle repeats over and over. Finally, you go
+back to the store and say to the person behind the counter, “I want a game that
+does this!” only to be told that no such game exists because there is no “market
+demand” for it. Then you say, “But I only need to change this one thing!” The
+person behind the counter says you can't change it. The games are all sealed up in
+their cartridges. You discover that your toy is limited to the games that others
+have decided that you need and no more.
+Linux, on the other hand, is like the world's largest Erector Set. You open it up
+and it's just a huge collection of parts. A lot of steel struts, screws, nuts, gears,
+pulleys, motors, and a few suggestions on what to build. So you start to play with
+it. You build one of the suggestions and then another. After a while you discover
+that you have your own ideas of what to make. You don't ever have to go back to
+the store, as you already have everything you need. The Erector Set takes on the
+shape of your imagination. It does what you want.
+Your choice of toys is, of course, a personal thing, so which toy would you find
+more satisfying?
+
+Seeing The World As The Shell Sees It
+
+echo – Display a line of text
+but see what  echo * does 
+have you seen * as output NO? why you ask
+cuz when you enter the command shell automaticall expand any qualifying character 
+which if you have read the wild card * is everything something like that read it
+
+Arithematic expression
+echo $((2 + 2))
+ see two bracket why you ask cuz its the syntax!!!!!! sorry i cant change it;
+echo $(($((5**2)) * 3))
+try this and know why
+but remember only interger
+
+Brace Expansion
+Perhaps the strangest expansion is called brace expansion. With it, you can create multiple text strings from a pattern containing braces
+echo Front-{A,B,C}-Back
+Front-A-Back Front-B-Back Front-C-Back
+awesome command but weird WHAT DO YOU EXPECT IT WAS RELESED 1989
+TRY echo Number_{1..5}
+echo a{A{1,2},B{3,4}}b
+You can even make file using this 
+ACTUALLY IT WILL BE EASY IF YOU LEARN BASH SCRIPT BUT WAIT THEIR IS MORE I WILL TELL YOU TO READ WHEN TO
+
+echo $USER
+user variable consist of your system user name 
+
+To see a list of available variables, try this:	printenv | less
+
+Command Substitution
+echo $(ls)
+Desktop Documents ls-output.txt Music Pictures Public Templates
+
+Quoting
+Now that we've seen how many ways the shell can perform expansions, it's time to learn how we can control it. Take for example:
+[me@linuxbox ~]$ echo this is a		test
+this is a test
+or:
+[me@linuxbox ~]$ echo The total is $100.00
+The total is 00.00
+In the first example, word-splitting by the shell removed extra whitespace from the echo
+command's list of arguments. In the second example, parameter expansion substituted an
+empty string for the value of “$1” because it was an undefined variable. The shell pro-
+vides a mechanism called quoting to selectively suppress unwanted expansions.
+
+Double Quotes
+Using double quotes, we can cope with filenames con-
+taining embedded spaces. Say we were the unfortunate victim of a file called two words.txt. If we tried to use this on the command line, word-splitting would cause this to be treated as two separate arguments rather than the desired single argument:
+[me@linuxbox ~]$ ls -l two words.txt
+ls: cannot access two: No such file or directory
+ls: cannot access words.txt: No such file or directory
+so we use "two words.txt"
+
+Remember, parameter expansion, arithmetic expansion, and command substitution still
+take place within double quotes:
+[me@linuxbox ~]$ echo "$USER $((2+2)) $(cal)"
+
+Single Quotes
+If we need to suppress all expansions, we use single quotes. Here is a comparison of un-
+quoted, double quotes, and single quotes:
+
+Escaping Characters
+Sometimes we only want to quote a single character. To do this, we can precede a charac-
+ter with a backslash, which in this context is called the escape character. Often this is
+done inside double quotes to selectively prevent an expansion:
 
