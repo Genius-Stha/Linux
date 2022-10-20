@@ -63,7 +63,8 @@ ctrl+d to say it is the end of file
 and again cat lazy_dog.txt to copy file to stdout in terminal
 
 Pipelines
-The ability of commands to read data from standard input and send to standard output is utilized by a shell feature called pipelines. Using the pipe operator “|” (vertical bar), the standard output of one command can be piped into the standard input of another:
+The ability of commands to read data from standard input and send to standard output is utilized by a shell feature called pipelines.
+Using the pipe operator “|” (vertical bar), the standard output of one command can be piped into the standard input of another:
 for eg : ls -l /usr/bin | less
 
 The Difference Between > and |
@@ -82,7 +83,9 @@ Here is an actual example submitted by a reader who was administering a Linux-
 based server appliance. As the superuser, he did this:
 # cd /usr/bin
 # ls > less
-The first command put him in the directory where most programs are stored and the second command told the shell to overwrite the file less with the output of the ls command. Since the /usr/bin directory already contained a file named “less” (the less program), the second command overwrote the less program file with the text from ls thus destroying the less program on his system.
+The first command put him in the directory where most programs are stored and the second command told the shell to overwrite the file less with 
+the output of the ls command. Since the /usr/bin directory already contained a file named “less” (the less program), the second command overwrote the 
+less program file with the text from ls thus destroying the less program on his system.
 The lesson here is that the redirection operator silently creates or overwrites files, so you need to treat it with a lot of respect.
 
 Filters : it take input, change it somehow and then output it.
@@ -99,7 +102,8 @@ contained in files. For example:
   
 grep - grep is a powerful program used to find text patterns within files. It's used like this:
 grep pattern [file...]
-Let's say we wanted to find all the files in our list of programs that had the word “zip” embedded in the name. Such a search might give us an idea of some of the programs on our system that had something to do with file compression. We would do this:
+Let's say we wanted to find all the files in our list of programs that had the word “zip” embedded in the name. Such a search might give us an 
+idea of some of the programs on our system that had something to do with file compression. We would do this:
 $ ls /bin /usr/bin | sort | uniq | grep zip
 
 head / tail – Print First / Last Part Of Files(10 LINE)
@@ -110,7 +114,8 @@ tail -f /var/log/messages
 -f let you see real time append in file 
 
 tee – Read From Stdin And Output To Stdout And Files
-Here we repeat one of our earlier examples, this time including tee to capture the entire directory listing to the file ls.txt before grep filters the pipeline's contents:
+Here we repeat one of our earlier examples, this time including tee to capture the entire directory listing to the file ls.txt 
+before grep filters the pipeline's contents:
 ls /usr/bin | tee ls.txt | grep zip
 
 SUMMING UP
@@ -185,7 +190,8 @@ vides a mechanism called quoting to selectively suppress unwanted expansions.
 
 Double Quotes
 Using double quotes, we can cope with filenames con-
-taining embedded spaces. Say we were the unfortunate victim of a file called two words.txt. If we tried to use this on the command line, word-splitting would cause this to be treated as two separate arguments rather than the desired single argument:
+taining embedded spaces. Say we were the unfortunate victim of a file called two words.txt. If we tried to use this on the command line, word-splitting 
+would cause this to be treated as two separate arguments rather than the desired single argument:
 [me@linuxbox ~]$ ls -l two words.txt
 ls: cannot access two: No such file or directory
 ls: cannot access words.txt: No such file or directory
