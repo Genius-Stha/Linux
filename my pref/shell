@@ -2,6 +2,7 @@ lets start with some shell commands
 date  shows date
 cal   calender
 df    To see the current amount of free space on your disk drives
+du    To see the directory space uses
 exit  it is what the name says
 cd    change directory
 file filename tells a lot about file
@@ -209,4 +210,53 @@ Escaping Characters
 Sometimes we only want to quote a single character. To do this, we can precede a charac-
 ter with a backslash, which in this context is called the escape character. Often this is
 done inside double quotes to selectively prevent an expansion:
+
+Advanced Keyboard Tricks
+Command Line Editing
+since the mouse is no use so keyboard is the key u see what i did with the word ahh
+
+Ctrl-a	Move cursor to the beginning of the line.
+Ctrl-e	Move cursor to the end of the line.
+Ctrl-f	Move cursor forward one character; same as the right arrow key.
+Ctrl-b	Move cursor backward one character; same as the left arrow key.
+Alt-f	Move cursor forward one word.
+Alt-b	Move cursor backward one word.
+Ctrl-l Clear the screen and move the cursor to the top left corner. The
+	clear command does the same thing.
+
+Searching History
+history | less 
+history | grep /usr/bin
+!88 shows 88 command in history
+ctrl+r in terminal for reverse search
+!numberRepeat history list item number.
+!stringRepeat last history list item starting with string.
+!?stringRepeat last history list item containing string.
+
+●id – Display user identity
+●chmod – Change a file's mode
+●umask – Set the default file permissions
+●su – Run a shell as another user
+●sudo – Execute a command as another user
+●chown – Change a file's owner
+●chgrp – Change a file's group ownership
+●passwd – Change a user's password
+
+Reading, Writing, And Executing
+try ls -l
+it might show somthing like this : drwxr-xr-x
+where d - directory it might be - which means regular file 
+l - A symbolic link
+c - A  character special file
+b - A block special file
+and rwx means read write and executable
+
+Owner	Group	World
+rwx	rwx	rwx
+
+chmod – Change File Mode
+it is in octal number system rwx(421)
+chmod 600 foo.txt
+ls -l foo.txt
+-rw------- 1 me
 
