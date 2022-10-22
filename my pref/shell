@@ -260,3 +260,15 @@ chmod 600 foo.txt
 ls -l foo.txt
 -rw------- 1 me
 
+u	Short for “user” but means the file or directory owner.
+g	Group owner.
+o	Short for “others,” but means world.
+a	Short for “all.” The combination of “u”, “g”, and “o”.
+
+and you can do operation like u+x...
+umask – Set Default Permissions(i also dont know i will write later)
+
+su – Run A Shell With Substitute User And Group IDs
+also known as super user
+
+
