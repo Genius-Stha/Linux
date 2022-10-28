@@ -266,9 +266,152 @@ o	Short for “others,” but means world.
 a	Short for “all.” The combination of “u”, “g”, and “o”.
 
 and you can do operation like u+x...
-umask – Set Default Permissions(i also dont know i will write later)
+umask – Set Default Permissions
+works on octal number system 
+for default it is 0 0 2 2  I'll say what does this means and why 4 instead of 3
+originally if you create the file you will see it will have -rw-rw-r--
+because if you write umask it will give you output of 002
+cuz Original file mode  --- rw- rw- rw-
+    Mask		000 000 000 010(2)
+    Result		--- rw- rw- r--
+    
+Again, where a 1 appears in the binary value, the corresponding attribute is unset. Play
+with some values (try some sevens) to get used to how this works. When you're done, re-
+member to clean up:
+    
+When we set the mask to 0000 (effectively turning it off)
+Original file mode--- rw- rw- rw-
+Mask		  000 000 000 000
+Result		  --- rw- rw- rw-
+
 
 su – Run A Shell With Substitute User And Group IDs
 also known as super user
 
+chown can change the file owner and/or the file group owner depending on the first ar-
+gument of the command. it is needed if you have  more than one user in the device
+ 
+Let's say that we have two users; janet, who has access to superuser privileges and
+tony, who does not. User janet wants to copy a file from her home directory to the
+home directory of user tony. Since user janet wants tony to be able to edit the file,
+janet changes the ownership of the copied file from janet to tony: sudo cp myfile.txt ~tony
+
+Changing Your Password
+passwd [user]
+
+How A Process Works(have you heard of init?)
+When a system starts up, the kernel initiates a few of its own activities as processes and
+launches a program called init. init, in turn, runs a series of shell scripts (located in
+/etc) called init scripts, which start all the system services. Many of these services are
+implemented as daemon programs, programs that just sit in the background and do their
+thing without having any user interface. So even if we are not logged in, the system is at
+least a little busy performing routine stuff.
+The fact that a program can launch other programs is expressed in the process scheme as
+a parent process producing a child process.
+
+kernel organize each process and gives it a unique id ie pid.it also keep track of memory used
+owner and so on.PIDs are assigned in ascending order, with init always getting PID 1.
+
+Viewing Processes - ps
+~ps
+PID TTY 	TIME CMD
+5198 pts/1	00:00:00 bash
+10129 pts/1	00:00:00 ps
+The result in this example lists two processes, process 5198 and process 10129, which are
+bash and ps respectively. As we can see, by default, ps doesn't show us very much, just
+the processes associated with the current terminal session. To see more, we need to add
+some options, but before we do that, let's look at the other fields produced by ps. TTY is
+short for “Teletype,” and refers to the controlling terminal for the process. Unix is show-
+ing its age here. The TIME field is the amount of CPU time consumed by the process. As
+we can see, neither process makes the computer work very hard.
+If we add an option, we can get a bigger picture of what the system is doing:
+
+Running. This means that the process is running or ready to run.
+Sleeping. The process is not running; rather, it is waiting for an
+event, such as a keystroke or network packet.
+D	Uninterruptible Sleep. Process is waiting for I/O such as a diskdrive.
+T	Stopped. Process has been instructed to stop. More on this later.
+Z	A defunct or “zombie” process. This is a child process that has
+	terminated, but has not been cleaned up by its parent.
+<	A high priority process. It's possible to grant more importance to a
+	process, giving it more time on the CPU. This property of a process
+	is called niceness. A process with high priority is said to be less nice
+	because it's taking more of the CPU's time, which leaves less for
+	everybody else.
+N	A low priority process. A process with low priority (a “nice”
+	process) will only get processor time
+
+Another popular set of options is “aux” (without a leading dash). This gives us even more
+information:ps aux
+To 1mmand
+
+xlogo program is a sample program supplied with the X Window System
+$ xlogo 
+just shows xlogo 
+but see in terminal you cant type other command when xlogo is running
+so we will learn about running,background programs,and many other thing
+we can do control+c to exit any running program in terminal
+we can even put the process in background
+$ xlogo& 
+this & will let you write other command while xlogo is running in background
+we can see the programs runned through this terminal by "jobs" command
+we can return to the background programs by
+do jobs then it will show the running background programs then it is given a certain number for
+it's indication and then we can go to background programs by fg(foreground) command 
+fg %1
+%1 indicate the first bg program then we can control+c to exit the program
+example if you run spotify or discord in terminal it will be running program and you can
+send it to background or exit it and so on.
+bg - background how to use this command for example you are running spotify it will run until it is 
+stopped in terminal so to run it you can suspend by control+z 
+and do jobs and bg %[number] to run in background
+
+Or we can use top command and kill the running programs through kill command
+syntax is kill [pid]
+try it you will know 
+kill has many signals like int,KILL,stop,cont...etc try reading it
+you can kill multiple windows all at one by killall command it don't need pids
+$killall firefox
+
+pstree	Outputs a process list arranged in a tree-like pattern showing the
+	parent/child relationships between processes.
+vmstat	Outputs a snapshot of system resource usage including, memory,
+	swap and disk I/O. To see a continuous display, follow the
+	command with a time delay (in seconds) for updates.
+xloadA  graphical program that draws a graph showing system load over
+	time.
+tload   Similar to the xload program, but draws the graph in the terminal.
+	Terminate the output with Ctrl-c
+
+ENVIRONMENT
+
+printenv – Print part or all of the environment 
+$printenv | less
+What we see is a list of environment variables and their values. For example, we see a
+variable called USER, which contains the value “me”. The printenv command can
+also list the value of a specific variable	
+ their is lot of variable which has already a value and cannot be changed and we can
+ see these variables by this commands and also be printed by printenv USER
+ or we can use echo command like echo $USER to see the value
+
+The set command, when used without options or arguments, will display both the shell
+and environment variables, as well as any defined shell functions. Unlike printenv, its
+output is courteously sorted in alphabetical order
+
+Startup Files For Login Shell Sessions
+FileContents
+/etc/profile	A global configuration script that applies to all users.
+~/.bash_profile	A user's personal startup file. Can be used to extend or
+		override settings in the global configuration script.
+~/.bash_login	If ~/.bash_profile is not found, bash attempts to
+		read this script.
+~/.profile	If neither ~/.bash_profile nor ~/.bash_login
+		is found, bash attempts to read this file. This is the
+		default in Debian-based distributions, such as Ubuntu.
+Startup Files For Non-Login Shell Sessions
+FileContents
+/etc/bash.bashrc	A global configuration script that applies to all users.
+~/.bashrc		A user's personal startup file. Can be used to extend or
+			override settings in the global configuration script.
+			
 
