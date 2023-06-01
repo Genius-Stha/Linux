@@ -175,6 +175,9 @@ ctrl +r to redo
 w to jump to next word
 b to jump to back word
 e to jump to end of the word
+A to append at end of the line
+a to append at end of the word
+
 
 2w to jump two word
 
