@@ -2,7 +2,7 @@
 Linux is a free and open-source operating system based on Unix. It is widely used in servers, desktops, cloud systems, and embedded devices due to its stability, security, and flexibility. Linux offers powerful command-line tools and is highly customizable, making it a favorite among developers and system administrators. Various distributions like Ubuntu, Debian, Fedora, and Arch Linux provide different environments and tools to suit a wide range of use cases.
 
 # File system in Linux
-![filesystem](/img/filesystem.png)
+![filesystem](/img/file-system.png)
 
 
 
