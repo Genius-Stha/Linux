@@ -62,8 +62,7 @@ unalias foo
 These alias are temporary for the session so to make the alias permanent alias foo='cd /usr' should be appended in the .bashrc
 
 ```
-## File System
-https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Standard-unix-filesystem-hierarchy.svg/1920px-Standard-unix-filesystem-hierarchy.svg.png
+
 ```
 
 type – Display A Command's Type
@@ -122,10 +121,15 @@ contained in files. For example:
   711 	lines
   4312	bytes
 
-grep - grep is a powerful program used to find text patterns within files. It's used like this:
+grep - grep is a powerful program used to find text patterns within files. 
+It's used like this:
+
 grep pattern [file...]
-Let's say we wanted to find all the files in our list of programs that had the word “zip” embedded in the name. Such a search might give us an
-idea of some of the programs on our system that had something to do with file compression. We would do this:
+
+Let's say we wanted to find all the files in our list of programs that
+had the word “zip” embedded in the name. Such a search might give us an
+idea of some of the programs on our system that had something to do with 
+file compression. We would do this:
 $ ls /bin /usr/bin | sort | uniq | grep zip
 
 head / tail – Print First / Last Part Of Files(10 LINE)
@@ -137,7 +141,8 @@ tail -f /var/log/messages
 
 tee – Read From Stdin And Output To Stdout And Files
 	-> echo "Another line" | tee -a output.txt
-Here we repeat one of our earlier examples, this time including tee to capture the entire directory listing to the file ls.txt
+Here we repeat one of our earlier examples, this time including tee to
+capture the entire directory listing to the file ls.txt
 before grep filters the pipeline's contents:
 ls /usr/bin | tee ls.txt | grep zip
 ```
@@ -146,7 +151,9 @@ ls /usr/bin | tee ls.txt | grep zip
 ```
 echo – Display a line of text
 but see what  echo * does
-have you seen * as output NO? why you ask cuz when you enter the command shell automatically expand any qualifying character which if you have read the wild card * is everything something like that read it
+have you seen * as output NO? why you ask cuz when you enter the command
+shell automatically expand any qualifying character which if you have
+read the wild card * is everything something like that read it
 ```
 # Arithematic expression
 ```
@@ -193,9 +200,10 @@ or:
 [me@linuxbox ~]$ echo The total is $100.00
 The total is 00.00
 In the first example, word-splitting by the shell removed extra whitespace from the echo
-command's list of arguments. In the second example, parameter expansion substituted an
-empty string for the value of “$1” because it was an undefined variable. The shell pro-
-vides a mechanism called quoting to selectively suppress unwanted expansions.
+command's list of arguments. In the second example, parameter expansion
+substituted an empty string for the value of “$1” because it was an
+undefined variable. The shell provides a mechanism called quoting to 
+selectively suppress unwanted expansions.
 ```
 ## Double Quotes
 ```
@@ -371,7 +379,7 @@ information:ps aux
 ```
 
 xlogo program is a sample program supplied with the X Window System
-$ xlogo
+``$ xlogo``
 just shows xlogo
 but see in terminal you cant type other command when xlogo is running
 so we will learn about running,background programs,and many other thing
@@ -946,7 +954,7 @@ graphical differences in vim
 
 
 
-## SUMMING UP
+## **SUMMING UP**
 Linux Is About Imagination
 When I am asked to explain the difference between Windows and Linux, I often
 use a toy analogy.
